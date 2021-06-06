@@ -22,20 +22,20 @@ def read_data(data_path, categories):
             img_path = os.path.join(path, img)
             # Baca data gambar
             leaf_img = cv2.imread(img_path)
-            # Resize gambar menjadi 100x100
+            # Resize gambar menjadi ukuran 100x100
             leaf_img = cv2.resize(leaf_img, (100,100))
             # Konversi gambar menjadi grayscale
             leaf_img = cv2.cvtColor(leaf_img, cv2.COLOR_BGR2GRAY)
             # Ubah gambar menjadi flatten array
             image = np.array(leaf_img).flatten()
-            # Masukkan gambar dan labelnya dalam variabel data
+            # Masukkan gambar dan labelnya dalam variabel 'data'
             data.append([image, label])
     # Acak urutan data
     random.shuffle(data)
     # Buat list kosong untuk menyimpan gambar dan label secara terpisah
     images = []
     labels  = []
-    # Pisahkan gambar dan label dari data
+    # Split gambar dan label dari data
     for image, label in data:
         images.append(image)
         labels.append(label)
@@ -48,15 +48,15 @@ categories = ['black_rot', 'esca', 'healthy', 'leaf_blight']
 
 ### BACA DATA GAMBAR ###
 print('[STATUS] Baca data train dan data test')
-# Membaca data train
+# Baca data train
 trainData, trainLabel = read_data(train_path, categories)
 print('Data Train :', np.shape(trainData))
-# Membaca data test
+# Baca data test
 testData, testLabel = read_data(test_path, categories)
 print('Data Test  :', np.shape(testData))
 
 ### TRAINING MODEL SVM ###
-# Membuat model SVM
+# Buat model SVM
 model = SVC(C=1, kernel='rbf', gamma='scale')
 # Sesuaikan model SVM dengan data train
 svm = model.fit(trainData, trainLabel)
