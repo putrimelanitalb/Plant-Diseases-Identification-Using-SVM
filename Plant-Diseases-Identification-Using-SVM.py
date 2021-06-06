@@ -15,8 +15,9 @@ def read_data(data_path, categories):
     for category in categories:
         # Buat path ke setiap folder categories
         path = os.path.join(data_path, category)
-        # Simpan category sebagai label untuk masing-masing categories
-        label = category
+        # Simpan index category sebagai label
+        label = categories.index(category)
+
         for img in os.listdir(path):
             # Buat path ke masing-masing gambar
             img_path = os.path.join(path, img)
@@ -29,17 +30,18 @@ def read_data(data_path, categories):
             # Ubah gambar menjadi flatten array
             image = np.array(leaf_img).flatten()
             # Masukkan gambar dan labelnya dalam variabel 'data'
-            data.append([image, label])
+            data.append([image, category])
+
     # Acak urutan data
     random.shuffle(data)
-    # Buat list kosong untuk menyimpan gambar dan label secara terpisah
-    images = []
+    # Buat list kosong untuk menyimpan feature dan label secara terpisah
+    features = []
     labels  = []
-    # Split gambar dan label dari data
-    for image, label in data:
-        images.append(image)
+    # Split feature dan label dari data
+    for feature, label in data:
+        features.append(image)
         labels.append(label)
-    return images, labels
+    return features, labels
 
 ### PATH FOLDER DATA ###
 train_path = 'grape_datasets/train'
