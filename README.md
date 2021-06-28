@@ -1,4 +1,4 @@
-# Identifikasi Penyakit Tanaman
+## Identifikasi Penyakit Daun Tanaman Anggur Menggunakan Metode _Support Vector Machine_
 
 **Paralel : P1**  
 
@@ -12,6 +12,5 @@
 | G64180051	| Hana Salsabila |
 | G64180053	| Putri Melanita Londong Bua |
 
-### **Judul**  
 
-Identifikasi Penyakit Daun Tanaman Anggur Menggunakan Metode _Support Vector Machine_
+
